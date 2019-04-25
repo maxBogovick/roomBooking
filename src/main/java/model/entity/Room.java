@@ -3,35 +3,37 @@ package model.entity;
 import java.util.Objects;
 
 public class Room {
-    private int id_room;
-    private String room_type;
+    private int id;
+    private String roomType;
     private int capacity;
     private int cost;
     private int quota;
+    private Integer orderId;
+    private Booking booking;
 
     public Room() {}
 
-    public Room(int id_room, String room_type, int capacity, int cost, int quota) {
-        this.id_room = id_room;
-        this.room_type = room_type;
+    public Room(int id, String room_type, int capacity, int cost, int quota) {
+        this.id = id;
+        this.roomType = room_type;
         this.capacity = capacity;
         this.cost = cost;
         this.quota = quota;
     }
 
     public int getRoomID() {
-        return id_room;
+        return id;
     }
 
     public void setRoomID(int id_room) {
-        this.id_room = id_room;
+        this.id = id_room;
     }
 
     public String getRoomType() {
-        return room_type;
+        return roomType;
     }
     public void setRoomType(String room_type) {
-        this.room_type = room_type;
+        this.roomType = room_type;
     }
 
     public int getCapacity() {
@@ -53,27 +55,34 @@ public class Room {
     public void setQuota(int quota) {
         this.quota = quota;
     }
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room that = (Room) o;
-        return room_type.equals(that.room_type);
+        return roomType.equals(that.roomType);
 //                capacity.equals(that.capacity) &&
 //                cost.equals(that.cost);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(room_type, capacity, cost);
+        return Objects.hash(roomType, capacity, cost);
     }
 
     @Override
     public String toString() {
         return "\nRoom{" +
-                "id=" + id_room +
-                ", room type='" + room_type + '\'' +
+                "id=" + id +
+                ", room type='" + roomType + '\'' +
                 ", capacity='" + capacity + '\'' +
                 ", cost='" + cost + '\'' +
                 ", quota=" + quota +

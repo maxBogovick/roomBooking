@@ -3,7 +3,7 @@ package model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order {
+public class Booking {
     private int id;
     private int totalCost;
     private String roomType;
@@ -12,7 +12,7 @@ public class Order {
 
     private List<Room> rooms = new ArrayList<>();
 
-    public Order(Integer id, int totalCost, String roomType, int clientId, User client) {
+    public Booking(Integer id, int totalCost, String roomType, int clientId, User client) {
         this.id = id;
         this.totalCost = totalCost;
         this.roomType = roomType;

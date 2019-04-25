@@ -73,8 +73,6 @@ public class AccessFilter implements Filter {
                 //todo check for visitor grants
                 System.out.println("I'm visitor");
             }
-//            filterChain.doFilter(request, response);
-//            return;
         }
 
         request.getRequestDispatcher("/api/" + Util.ERROR_PAGE.getPath()).forward(request, response);

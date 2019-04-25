@@ -6,13 +6,14 @@ import model.entity.Room;
 
 import java.util.List;
 
-public class RoomService {
+public interface RoomService {
 
     DaoFactory daoFactory = DaoFactory.getInstance();
 
-    public List<Room> getAllRooms(){
-        try (RoomDao dao = daoFactory.createRoomDao()) {
-            return dao.findAll();
-        }
-    }
+    public List<Room> getAllRooms();
+//    {
+//        try (RoomDao dao = daoFactory.createRoomDao()) {
+//            return dao.findAll();
+//        }
+//    }
 }

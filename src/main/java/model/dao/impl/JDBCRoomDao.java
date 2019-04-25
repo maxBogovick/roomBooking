@@ -22,7 +22,7 @@ public class JDBCRoomDao implements RoomDao {
     @Override
     public boolean create(Room entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO rooms(room_type, capacity, cost, quota) VALUES (?,?,?,?)")){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO rooms(roomType, capacity, cost, quota) VALUES (?,?,?,?)")){
 
             System.out.println(entity);
 

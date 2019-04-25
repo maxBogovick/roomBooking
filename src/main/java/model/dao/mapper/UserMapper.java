@@ -19,14 +19,6 @@ public class UserMapper implements ObjectMapper<User> {
         user.setRole(rs.getInt("role_ID_role"));
 
 
-//        int id = rs.getInt("id_user");
-//        String login = rs.getString("login");
-//        String password = rs.getString("password");
-//        String mail = rs.getString("user_email");
-//
-//
-//
-//        User user = new User(id, login, password, mail);
         return user;
     }
 

@@ -3,16 +3,16 @@ package model.entity;
 public class Bill {
     private Integer id;
     private User admin;
-    private Order order;
+    private Booking booking;
     private Integer price;
     private boolean isConfirm;
     private Integer adminId;
     private Integer orderId;
 
-    private Bill(Integer id, User admin, Order order, Integer price, boolean isConfirm, Integer adminId, Integer orderId) {
+    private Bill(Integer id, User admin, Booking booking, Integer price, boolean isConfirm, Integer adminId, Integer orderId) {
         this.id = id;
         this.admin = admin;
-        this.order = order;
+        this.booking = booking;
         this.price = price;
         this.isConfirm = isConfirm;
         this.adminId = adminId;
@@ -34,12 +34,12 @@ public class Bill {
         this.admin = admin;
     }
 
-    public Order getOrder() {
-        return order;
+    public Booking getBooking() {
+        return booking;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 
     public int getPrice() {

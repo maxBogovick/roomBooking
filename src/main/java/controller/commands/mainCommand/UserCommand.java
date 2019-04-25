@@ -4,6 +4,7 @@ import controller.commands.Command;
 import controller.commands.mainCommand.util.Util;
 import model.entity.User;
 import model.service.UserService;
+import model.service.impl.UserServiceImpl;
 import model.util.Constants;
 import org.apache.log4j.Logger;
 
@@ -14,7 +15,7 @@ public class UserCommand implements Command {
     private static final Logger logger = Logger.getLogger(UserCommand.class);
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        UserService userService = new UserService();
+        UserServiceImpl userService = new UserServiceImpl();
         String nameFromRequest = request.getParameter("name");
         String passFromRequest = request.getParameter("pass");
         logger.info("Attempt to log in user: " + nameFromRequest);
