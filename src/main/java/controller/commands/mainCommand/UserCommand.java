@@ -3,6 +3,7 @@ package controller.commands.mainCommand;
 import controller.commands.Command;
 import controller.commands.mainCommand.util.Util;
 import model.entity.User;
+import model.service.ServiceFactory;
 import model.service.UserService;
 import model.service.impl.UserServiceImpl;
 import model.util.Constants;
@@ -15,7 +16,7 @@ public class UserCommand implements Command {
     private static final Logger logger = Logger.getLogger(UserCommand.class);
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        UserServiceImpl userService = new UserServiceImpl();
+        UserService userService = ServiceFactory.getUserService();
         String nameFromRequest = request.getParameter("name");
         String passFromRequest = request.getParameter("pass");
         logger.info("Attempt to log in user: " + nameFromRequest);

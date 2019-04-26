@@ -8,12 +8,5 @@ import java.util.List;
 
 public interface RoomService {
 
-    DaoFactory daoFactory = DaoFactory.getInstance();
-
-    public List<Room> getAllRooms();
-//    {
-//        try (RoomDao dao = daoFactory.createRoomDao()) {
-//            return dao.findAll();
-//        }
-//    }
+    List<Room> getAllRooms();
 }

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class JDBCRoomDao implements RoomDao {
     private Connection connection;
@@ -22,7 +23,7 @@ public class JDBCRoomDao implements RoomDao {
     @Override
     public boolean create(Room entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO rooms(roomType, capacity, cost, quota) VALUES (?,?,?,?)")){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO rooms(room_type, capacity, cost, quota) VALUES (?,?,?,?)")){
 
             System.out.println(entity);
 
@@ -50,9 +51,10 @@ public class JDBCRoomDao implements RoomDao {
         Map<Integer, User> users = new HashMap<>();
 
         final String query = "" +
-                " select * from room" +
-                " left join room_has_user using (id)" +
-                " left join user using (id)";
+                " select r.ID_room as idroom, r.room_type as roomType, r.capacity as capacity, " +
+                " r.cost as cost, r.quota as quota, r.order_ID_order as orderId from rooms r";// +
+        //" left join room_has_user using (id)" +
+        //" left join user using (id)";
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);
 
@@ -62,8 +64,8 @@ public class JDBCRoomDao implements RoomDao {
             while (rs.next()) {
                 Room room = roomMapper
                         .extractFromResultSet(rs);
-                User user = userMapper
-                        .extractFromResultSet(rs);
+                /*User user = userMapper
+                        .extractFromResultSet(rs);*/
                 room = roomMapper
                         .makeUnique(rooms, room);
 //                user = userMapper

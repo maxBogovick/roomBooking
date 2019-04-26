@@ -8,8 +8,13 @@ import model.service.RoomService;
 import java.util.List;
 
 public class RoomServiceImpl implements RoomService {
-    DaoFactory daoFactory = DaoFactory.getInstance();
+    private final DaoFactory daoFactory;
 
+    public RoomServiceImpl(final DaoFactory daoFactory) {
+        this.daoFactory = daoFactory;
+    }
+
+    @Override
     public List<Room> getAllRooms(){
         try (RoomDao dao = daoFactory.createRoomDao()) {
             return dao.findAll();

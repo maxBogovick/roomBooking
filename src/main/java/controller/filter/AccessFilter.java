@@ -59,8 +59,10 @@ public class AccessFilter implements Filter {
         if (session != null && session.getAttribute("User") != null) {
             User user = (User) session.getAttribute("User");
             if (Role.ADMIN.getRole() == user.getRole())  {
-                filterChain.doFilter(request, response);
-                return;
+                if (adminUrls.contains(request.getRequestURI())) {
+                    filterChain.doFilter(request, response);
+                    return;
+                }
             }
             if (Role.CLIENT.getRole() == user.getRole()) {
                 //todo check for client grants
