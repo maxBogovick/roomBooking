@@ -27,18 +27,14 @@ public class JDBCUserDao implements UserDao {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO user(login, password, user_email, role_ID_role) VALUES (?,?,?,?)")){
 
-            System.out.println(entity);
-
             statement.setString(1, entity.getLogin());
             statement.setString(2, entity.getPassword());
             statement.setString(3, entity.getEmail());
             statement.setInt(4, 1);
-            //entity.getRole().getId());
 
             statement.execute();
             return true;
 
-       //     statement.setInt(4, entity.getRole());
 
 
         }catch (SQLException | RuntimeException ex){

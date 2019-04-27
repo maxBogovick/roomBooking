@@ -47,8 +47,7 @@
                     </tr>
                 </c:forEach>
             </table>
-
-            <a href="createProduct" >Create Product</a>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_create'">Create Room</button>
         </div>
     </div>
 </div>

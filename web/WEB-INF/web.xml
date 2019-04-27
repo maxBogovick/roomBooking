@@ -50,7 +50,7 @@
         </init-param>
         <init-param>
             <param-name>admin-urls</param-name>
-            <param-value>/api/admin_home_list,/api/log_out</param-value>
+            <param-value>/api/admin_home_list,/api/log_out,/api/create_room,/api/show_create</param-value>
         </init-param>
     </filter>
     <filter-mapping>

@@ -16,6 +16,9 @@ import java.util.Objects;
 public class JDBCRoomDao implements RoomDao {
     private Connection connection;
 
+    public JDBCRoomDao() {
+    }
+
     public JDBCRoomDao(Connection connection) {
         this.connection = connection;
     }
@@ -23,9 +26,7 @@ public class JDBCRoomDao implements RoomDao {
     @Override
     public boolean create(Room entity) throws SQLException {
         try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO rooms(room_type, capacity, cost, quota) VALUES (?,?,?,?)")){
-
-            System.out.println(entity);
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO rooms(roomType, capacity, cost, quota) VALUES (?,?,?,?)")){
 
             statement.setString(1, entity.getRoomType());
             statement.setInt(2, entity.getCapacity());

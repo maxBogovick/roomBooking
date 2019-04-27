@@ -24,6 +24,8 @@ public class CommandFactory {
         commands.put(Util.INFO_PAGE.getPath(), new InfoCommand());
         commands.put(Util.ROOM_LIST.getPath(), new RoomListCommand());
         commands.put(Util.ADMIN_ROOM_LIST.getPath(), new AdminRoomListCommand());
+        commands.put(Util.CREATE_ROOM.getPath(), new CreateRoomCommand());
+        commands.put(Util.SHOW_CREATE.getPath(), new ShowCreateRoomCommand());
     }
 
     public static Command getCommand(String url) {
