@@ -26,6 +26,9 @@
             <label>Name:
                 <input type="text" name="name" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
+            <label>Email:
+                <input type="text" name="email" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+            </label>
             <label>Password:
                 <input type="password" name="pass" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>

@@ -17,12 +17,13 @@ public class RegistrationCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String nameFromRequest = request.getParameter("name");
         String passFromRequest = request.getParameter("pass");
+        String emailFromRequest = request.getParameter("email");
 
         User user = new User();
         user.setLogin(nameFromRequest);
         String passWithHash = Constants.getPwdHash(passFromRequest);
         user.setPassword(passWithHash);
-        user.setEmail("mail.ua");
+        user.setEmail(emailFromRequest);
         user.setRole(2);
 
         JDBCUserDao jdbcUserDao = new JDBCUserDao();
