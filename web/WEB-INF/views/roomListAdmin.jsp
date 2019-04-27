@@ -28,28 +28,22 @@
             <h2>
                 <i>Room List Admin</i>
             </h2>
-            <p style="color: red;">${errorString}</p>
-
             <table border="1" cellpadding="5" cellspacing="1" >
                 <tr>
                     <th>Room Type</th>
                     <th>Capacity</th>
-                    <th>Cost</th>
+                    <th>Price</th>
                     <th>Quota</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
                 </tr>
-                <c:forEach items="${productList}" var="product" >
+                <c:forEach items="${rooms}" var="room" >
                     <tr>
-                        <td>${product.code}</td>
-                        <td>${product.name}</td>
-                        <td>${product.price}</td>
-                        <td>
-                            <a href="editProduct?code=${product.code}">Edit</a>
-                        </td>
-                        <td>
-                            <a href="deleteProduct?code=${product.code}">Delete</a>
-                        </td>
+                        <td>${room.roomType}</td>
+                        <td>${room.capacity}</td>
+                        <td>${room.cost}</td>
+                        <td>${room.quota}</td>
+                        <td><a href="editProduct?code=${product.code}">Edit</a></td>
+                        <td><a href="deleteProduct?code=${product.code}">Delete</a></td>
+                    </tr>
                     </tr>
                 </c:forEach>
             </table>

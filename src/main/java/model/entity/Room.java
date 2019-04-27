@@ -8,14 +8,14 @@ public class Room {
     private int capacity;
     private int cost;
     private int quota;
-    private Integer orderId;
+    private int orderId;
     private Booking booking;
 
     public Room() {}
 
-    public Room(int id, String room_type, int capacity, int cost, int quota) {
+    public Room(int id, String roomType, int capacity, int cost, int quota) {
         this.id = id;
-        this.roomType = room_type;
+        this.roomType = roomType;
         this.capacity = capacity;
         this.cost = cost;
         this.quota = quota;
@@ -39,7 +39,7 @@ public class Room {
     public int getCapacity() {
         return capacity;
     }
-    public void setCapacity(int email) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
     public int getCost() {
@@ -55,7 +55,7 @@ public class Room {
     public void setQuota(int quota) {
         this.quota = quota;
     }
-    public Integer getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 

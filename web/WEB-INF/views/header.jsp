@@ -15,10 +15,16 @@
     <div style="float: right; padding: 10px; text-align: right;">
 
         <!-- User store in session with attribute: loginedUser -->
-        Hello <b>${loginedUser.name}</b>
+        <div style="padding: 5px;">
+
+
+            <%--<li><a href="${pageContext.request.contextPath}/university/language/en">English</a></li>--%>
+            <%--<li><a href="${pageContext.request.contextPath}/university/language/ua">Українська</a></li>--%>
+
         <br/>
         <%--Search <input name="search">--%>
 
     </div>
 
+</div>
 </div>

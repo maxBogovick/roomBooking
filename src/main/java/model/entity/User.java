@@ -21,12 +21,6 @@ public class User {
         this.role = role;
     }
 
-//    public User(Integer id, String login, String password, String email) {
-//        this.id = id;
-//        this.login = login;
-//        this.password = password;
-//        this.email = email;
-//    }
 
     public int getId() {
         return id;

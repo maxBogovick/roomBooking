@@ -12,7 +12,7 @@ public interface Command {
     String ERROR_PAGE = "/WEB-INF/views/error.jsp";
     String HOME = "/index.jsp";
     String INFO_VIEW = "/WEB-INF/views/infoView.jsp";
-    String USER = "/WEB-INF/views/user.jsp";
+    String USER = "/WEB-INF/views/userHomePage.jsp";
 
     String APARTMENTS_FOR_ORDER = "/WEB-INF/views/apartments_selection.jsp";
     String CLIENT_BILLS_JSP = "/WEB-INF/views/bills_page.jsp";

@@ -3,6 +3,7 @@ package controller.commands.mainCommand;
 import controller.commands.Command;
 import controller.commands.mainCommand.util.Util;
 import model.entity.User;
+import model.entity.types.Role;
 import model.service.ServiceFactory;
 import model.service.UserService;
 import model.service.impl.UserServiceImpl;
@@ -27,7 +28,10 @@ public class UserCommand implements Command {
         if (Constants.getPwdHash(passFromRequest).equals(password)) {
             request.getSession(true).setAttribute("User", user);
             logger.info("Successfully logged in user: " + user.getLogin());
-            return "redirect:/" + Util.USER_HOME_PAGE.getPath();
+            if (Role.ADMIN.getRole() == user.getRole())  {
+                return "redirect:/" + Util.ADMIN_ROOM_LIST.getPath();
+                }
+            return "redirect:/" + Util.ROOM_LIST.getPath();
         }
         return SIGN_IN_JSP;
     }

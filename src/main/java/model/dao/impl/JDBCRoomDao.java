@@ -51,10 +51,9 @@ public class JDBCRoomDao implements RoomDao {
         Map<Integer, User> users = new HashMap<>();
 
         final String query = "" +
-                " select r.ID_room as idroom, r.room_type as roomType, r.capacity as capacity, " +
+                " select r.idRoom as idroom, r.roomType as roomType, r.capacity as capacity, " +
                 " r.cost as cost, r.quota as quota, r.order_ID_order as orderId from rooms r";// +
-        //" left join room_has_user using (id)" +
-        //" left join user using (id)";
+
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);
 
