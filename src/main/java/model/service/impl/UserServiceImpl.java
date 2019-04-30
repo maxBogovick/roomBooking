@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    public void create(final User user) {
+    public void singUp(final User user) {
         try {
             userDao.create(user);
         } catch (SQLException e) {

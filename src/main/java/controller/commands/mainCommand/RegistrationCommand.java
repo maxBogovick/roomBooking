@@ -31,7 +31,7 @@ public class RegistrationCommand implements Command {
 
         UserService userService = new UserServiceImpl(DaoFactory.getInstance());
         try {
-            userService.create(user);
+            userService.singUp(user);
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
