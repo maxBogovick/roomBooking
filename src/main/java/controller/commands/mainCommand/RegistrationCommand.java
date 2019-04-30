@@ -1,10 +1,12 @@
 package controller.commands.mainCommand;
 
 import controller.commands.Command;
+import model.dao.DaoFactory;
 import model.dao.impl.JDBCUserDao;
 import model.entity.User;
 import model.entity.types.Role;
 import model.service.UserService;
+import model.service.impl.UserServiceImpl;
 import model.util.Constants;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,13 +29,20 @@ public class RegistrationCommand implements Command {
         user.setRole(2);
 
 
-
-        JDBCUserDao jdbcUserDao = new JDBCUserDao();
+        UserService userService = new UserServiceImpl(DaoFactory.getInstance());
         try {
-            jdbcUserDao.create(user);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            userService.create(user);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
         }
+
+//
+//        JDBCUserDao jdbcUserDao = new JDBCUserDao();
+//        try {
+//            jdbcUserDao.create(user);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         return HOME;
     }
 }
