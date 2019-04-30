@@ -37,7 +37,6 @@ public class JDBCRoomDao implements RoomDao {
             return true;
 
         }catch (SQLException | RuntimeException ex){
-            System.out.println(ex);
             throw new RuntimeException();
         }
     }
@@ -74,8 +73,7 @@ public class JDBCRoomDao implements RoomDao {
             }
             return new ArrayList<>(rooms.values());
         } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException(e);
         }
     }
 

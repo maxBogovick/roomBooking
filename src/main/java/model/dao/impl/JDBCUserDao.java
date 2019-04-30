@@ -38,7 +38,6 @@ public class JDBCUserDao implements UserDao {
 
 
         }catch (SQLException | RuntimeException ex){
-            System.out.println(ex);
             throw new RuntimeException();
         }
 
@@ -89,7 +88,6 @@ public class JDBCUserDao implements UserDao {
             return user;
 
         }catch (SQLException ex){
-            System.out.println(ex);
             throw new RuntimeException();
         }
     }
