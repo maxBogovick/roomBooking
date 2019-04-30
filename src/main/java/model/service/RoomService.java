@@ -9,4 +9,6 @@ import java.util.List;
 public interface RoomService {
 
     List<Room> getAllRooms();
+
+    void create(Room room);
 }

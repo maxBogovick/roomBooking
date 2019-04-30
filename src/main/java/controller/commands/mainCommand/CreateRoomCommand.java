@@ -1,19 +1,27 @@
 package controller.commands.mainCommand;
 
+import com.google.common.base.Strings;
 import controller.commands.Command;
 import model.dao.impl.JDBCRoomDao;
 import model.entity.Room;
+import model.service.RoomService;
+import model.service.ServiceFactory;
 
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 
-public class CreateRoomCommand implements Command {
+public class CreateRoomCommand extends BaseCommand {
+    
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String typeFromRequest = request.getParameter("type");
-        int capacityFromRequest = Integer.parseInt(request.getParameter("capacity"));
+        final String capacity = request.getParameter("capacity");
+        // check input not null required params
+        if (Strings.isNullOrEmpty(capacity)) throw new IllegalArgumentException("capacity must be a set");
+        int capacityFromRequest = Integer.parseInt(capacity);
+        
         int costFromRequest = Integer.parseInt(request.getParameter("cost"));
         int quotaFromRequest = Integer.parseInt(request.getParameter("quota"));
 
@@ -22,13 +30,7 @@ public class CreateRoomCommand implements Command {
         room.setCapacity(capacityFromRequest);
         room.setCost(costFromRequest);
         room.setQuota(quotaFromRequest);
-
-        JDBCRoomDao jdbcRoomDao = new JDBCRoomDao();
-        try {
-            jdbcRoomDao.create(room);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        roomService.create(room);
         return ADMIN_HOME_JSP;
     }
 
