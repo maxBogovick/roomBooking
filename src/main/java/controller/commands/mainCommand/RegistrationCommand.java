@@ -15,16 +15,18 @@ public class RegistrationCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        String nameFromRequest = request.getParameter("name");
-        String passFromRequest = request.getParameter("pass");
-        String emailFromRequest = request.getParameter("email");
+//        String nameFromRequest = request.getParameter("name");
+//        String passFromRequest = request.getParameter("pass");
+//        String emailFromRequest = request.getParameter("email");
 
         User user = new User();
-        user.setLogin(nameFromRequest);
-        String passWithHash = Constants.getPwdHash(passFromRequest);
+        user.setLogin(request.getParameter("name"));
+        String passWithHash = Constants.getPwdHash(request.getParameter("pass"));
         user.setPassword(passWithHash);
-        user.setEmail(emailFromRequest);
+        user.setEmail(request.getParameter("email"));
         user.setRole(2);
+
+
 
         JDBCUserDao jdbcUserDao = new JDBCUserDao();
         try {
