@@ -23,17 +23,19 @@
             <h2>Create new room</h2>
         </div>
         <form method="post" action="/api/create_room" class="w3-selection w3-light-grey w3-padding">
+            <input type="hidden" name="roomId" value="${room.roomID}"/>
+            <input type="hidden" name="orderId" value="${room.orderId}"/>
             <label>Type:
-                <input type="type" name="type" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="text" required name="type" maxlength="50" value="${room.roomType}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label>Capacity:
-                <input type="capacity" name="capacity" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="number" required maxlength="3" value="${room.capacity}" name="capacity" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label>Cost:
-                <input type="cost" name="cost" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="number" required name="cost" value="${room.cost}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label>Quota:
-                <input type="quota" name="quota" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="number" required name="quota" value="${room.quota}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <button type="submit" class="w3-btn w3-green w3-round-large w3-margin-bottom">Submit</button>
         </form>

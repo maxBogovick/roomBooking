@@ -47,9 +47,12 @@ public class JDBCRoomDao implements RoomDao {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM rooms WHERE idRoom = ?")){
             preparedStatement.setInt(1,id);
             ResultSet rs = preparedStatement.executeQuery();
-            rs.next();
-
-            Room room = new RoomMapper().extractFromResultSet(rs);
+            final Room room;
+            if (rs.next()) {
+                room = new RoomMapper().extractFromResultSet(rs);
+            } else {
+                room = null;
+            }
 
             return room;
 
@@ -65,8 +68,8 @@ public class JDBCRoomDao implements RoomDao {
         Map<Integer, User> users = new HashMap<>();
 
         final String query = "" +
-                " select r.idRoom as idroom, r.roomType as roomType, r.capacity as capacity, " +
-                " r.cost as cost, r.quota as quota, r.order_ID_order as orderId from rooms r";// +
+                " select r.idRoom as idRoom, r.roomType as roomType, r.capacity as capacity, " +
+                " r.cost as cost, r.quota as quota, r.order_ID_order as order_ID_order from rooms r";// +
 
         try (Statement st = connection.createStatement()) {
             ResultSet rs = st.executeQuery(query);
@@ -95,7 +98,20 @@ public class JDBCRoomDao implements RoomDao {
 
     @Override
     public void update(Room entity) {
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement("UPDATE rooms set roomType = ?, capacity = ?, cost=?, quota=? where idRoom=?")){
 
+            statement.setString(1, entity.getRoomType());
+            statement.setInt(2, entity.getCapacity());
+            statement.setInt(3, entity.getCost());
+            statement.setInt(4, entity.getQuota());
+            statement.setInt(5, entity.getRoomID());
+
+            statement.execute();
+
+        }catch (SQLException | RuntimeException ex){
+            throw new RuntimeException();
+        }
     }
 
     @Override

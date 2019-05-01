@@ -8,6 +8,7 @@ import model.service.RoomService;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class RoomServiceImpl implements RoomService  {
 //    private final DaoFactory daoFactory;
@@ -31,5 +32,17 @@ public class RoomServiceImpl implements RoomService  {
             //save error message into log
             throw new RuntimeException(e);
         }
+    } 
+    
+    @Override
+    public void update(final Room room) {
+        if (Objects.isNull(room)) throw new IllegalArgumentException("Room must be a set");
+        roomDao.update(room);
+    }
+
+    @Override
+    public Optional<Room> findById(int id) {
+        final Room room = roomDao.findById(id);
+        return Optional.ofNullable(room);
     }
 }

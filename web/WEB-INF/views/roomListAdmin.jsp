@@ -41,8 +41,8 @@
                         <td>${room.capacity}</td>
                         <td>${room.cost}</td>
                         <td>${room.quota}</td>
-                        <td><a href="editProduct?code=${product.code}">Edit</a></td>
-                        <td><a href="deleteProduct?code=${product.code}">Delete</a></td>
+                        <td><a href="/api/show_create?id=${room.roomID}">Edit</a></td>
+                        <td><a href="/api/delete?id=${room.roomID}">Delete</a></td>
                     </tr>
                     </tr>
                 </c:forEach>

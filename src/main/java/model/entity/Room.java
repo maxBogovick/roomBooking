@@ -3,12 +3,12 @@ package model.entity;
 import java.util.Objects;
 
 public class Room {
-    private int id;
+    private Integer id;
     private String roomType;
     private int capacity;
     private int cost;
     private int quota;
-    private int orderId;
+    private Integer orderId;
     private Booking booking;
 
     public Room() {}
@@ -21,7 +21,7 @@ public class Room {
         this.quota = quota;
     }
 
-    public int getRoomID() {
+    public Integer getRoomID() {
         return id;
     }
 
@@ -55,7 +55,7 @@ public class Room {
     public void setQuota(int quota) {
         this.quota = quota;
     }
-    public int getOrderId() {
+    public Integer getOrderId() {
         return orderId;
     }
 
