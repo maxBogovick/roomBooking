@@ -39,7 +39,6 @@ public class CreateRoomCommand extends BaseCommand {
         room.setCost(Integer.parseInt(request.getParameter("cost")));
         room.setQuota(Integer.parseInt(request.getParameter("quota")));
 
-        RoomService roomService = new RoomServiceImpl(DaoFactory.getInstance());
         try {
             if (isNewRoom) {
                 roomService.create(room);

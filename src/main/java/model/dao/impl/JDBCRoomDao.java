@@ -98,8 +98,7 @@ public class JDBCRoomDao implements RoomDao {
 
     @Override
     public void update(Room entity) {
-        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("UPDATE rooms set roomType = ?, capacity = ?, cost=?, quota=? where idRoom=?")){
+        try(PreparedStatement statement = connection.prepareStatement("UPDATE rooms set roomType = ?, capacity = ?, cost=?, quota=? where idRoom=?")){
 
             statement.setString(1, entity.getRoomType());
             statement.setInt(2, entity.getCapacity());
