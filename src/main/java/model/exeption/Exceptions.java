@@ -1,4 +1,4 @@
 package model.exeption;
 
-public class Exceptions extends Exception {
+public class Exceptions extends RuntimeException {
 }

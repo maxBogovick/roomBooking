@@ -1,10 +1,12 @@
 package controller.commands.mainCommand;
 
 import controller.commands.Command;
+import model.dao.DaoFactory;
 import model.dao.impl.JDBCUserDao;
 import model.entity.User;
 import model.entity.types.Role;
 import model.service.UserService;
+import model.service.impl.UserServiceImpl;
 import model.util.Constants;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,23 +17,32 @@ public class RegistrationCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        String nameFromRequest = request.getParameter("name");
-        String passFromRequest = request.getParameter("pass");
-        String emailFromRequest = request.getParameter("email");
+//        String nameFromRequest = request.getParameter("name");
+//        String passFromRequest = request.getParameter("pass");
+//        String emailFromRequest = request.getParameter("email");
 
         User user = new User();
-        user.setLogin(nameFromRequest);
-        String passWithHash = Constants.getPwdHash(passFromRequest);
+        user.setLogin(request.getParameter("name"));
+        String passWithHash = Constants.getPwdHash(request.getParameter("pass"));
         user.setPassword(passWithHash);
-        user.setEmail(emailFromRequest);
+        user.setEmail(request.getParameter("email"));
         user.setRole(2);
 
-        JDBCUserDao jdbcUserDao = new JDBCUserDao();
+
+        UserService userService = new UserServiceImpl(DaoFactory.getInstance());
         try {
-            jdbcUserDao.create(user);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            userService.create(user);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
         }
+
+//
+//        JDBCUserDao jdbcUserDao = new JDBCUserDao();
+//        try {
+//            jdbcUserDao.create(user);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         return HOME;
     }
 }

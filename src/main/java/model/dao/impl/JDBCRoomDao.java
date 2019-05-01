@@ -37,15 +37,28 @@ public class JDBCRoomDao implements RoomDao {
             return true;
 
         }catch (SQLException | RuntimeException ex){
-            System.out.println(ex);
             throw new RuntimeException();
         }
     }
 
     @Override
     public Room findById(int id) {
-        return null;
+        try(Connection connection = ConnectionPoolHolder.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM rooms WHERE idRoom = ?")){
+            preparedStatement.setInt(1,id);
+            ResultSet rs = preparedStatement.executeQuery();
+            rs.next();
+
+            Room room = new RoomMapper().extractFromResultSet(rs);
+
+            return room;
+
+        }catch (SQLException ex){
+            throw new RuntimeException();
+        }
     }
+
+
     @Override
     public List<Room> findAll() {
         Map<Integer, Room> rooms = new HashMap<>();
@@ -74,8 +87,7 @@ public class JDBCRoomDao implements RoomDao {
             }
             return new ArrayList<>(rooms.values());
         } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException(e);
         }
     }
 

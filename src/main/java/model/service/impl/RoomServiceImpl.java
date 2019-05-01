@@ -9,7 +9,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 
-public class RoomServiceImpl implements RoomService {
+public class RoomServiceImpl implements RoomService  {
+//    private final DaoFactory daoFactory;
     private final RoomDao roomDao;
 
     public RoomServiceImpl(final DaoFactory daoFactory) {

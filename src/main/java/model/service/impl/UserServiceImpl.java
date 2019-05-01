@@ -6,17 +6,29 @@ import model.entity.User;
 import model.service.RoomService;
 import model.service.UserService;
 
+import java.sql.SQLException;
+
 public class UserServiceImpl implements UserService {
-    private final DaoFactory daoFactory;
+//    private final DaoFactory daoFactory;
+    private final UserDao userDao;
 
     public UserServiceImpl(final DaoFactory daoFactory) {
-        this.daoFactory = daoFactory;
+//        this.daoFactory = daoFactory;
+        this.userDao = daoFactory.createUserDao();
     }
 
     public User login(String name){
-        UserDao userDao = daoFactory.createUserDao();
+//        UserDao userDao = daoFactory.createUserDao();
         User user = userDao.findByName(name);
         return user;
+    }
 
+    public void create(final User user) {
+        try {
+            userDao.create(user);
+        } catch (SQLException e) {
+            //save error message into log
+            throw new RuntimeException(e);
+        }
     }
 }
