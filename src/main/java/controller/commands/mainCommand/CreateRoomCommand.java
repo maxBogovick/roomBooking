@@ -1,10 +1,12 @@
 package controller.commands.mainCommand;
 
 import controller.commands.Command;
+import controller.commands.mainCommand.util.Util;
 import model.dao.DaoFactory;
 import model.dao.impl.JDBCRoomDao;
 import model.entity.Room;
 import model.service.RoomService;
+import model.service.ServiceFactory;
 import model.service.impl.RoomServiceImpl;
 
 
@@ -26,7 +28,7 @@ public class CreateRoomCommand implements Command {
         room.setCost(Integer.parseInt(request.getParameter("cost")));
         room.setQuota(Integer.parseInt(request.getParameter("quota")));
 
-        RoomService roomService = new RoomServiceImpl(DaoFactory.getInstance());
+        RoomService roomService = ServiceFactory.getRoomService();
         try {
             roomService.create(room);
         } catch (RuntimeException e) {
@@ -39,7 +41,8 @@ public class CreateRoomCommand implements Command {
 //        } catch (SQLException e) {
 //            throw new RuntimeException(e);
 //        }
-        return ADMIN_HOME_JSP;
+
+        return "redirect:/" + Util.ADMIN_ROOM_LIST.getPath();
     }
 
 }

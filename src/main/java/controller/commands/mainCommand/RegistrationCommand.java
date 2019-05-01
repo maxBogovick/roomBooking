@@ -5,6 +5,7 @@ import model.dao.DaoFactory;
 import model.dao.impl.JDBCUserDao;
 import model.entity.User;
 import model.entity.types.Role;
+import model.service.ServiceFactory;
 import model.service.UserService;
 import model.service.impl.UserServiceImpl;
 import model.util.Constants;
@@ -29,7 +30,7 @@ public class RegistrationCommand implements Command {
         user.setRole(2);
 
 
-        UserService userService = new UserServiceImpl(DaoFactory.getInstance());
+        UserService userService = ServiceFactory.getUserService();
         try {
             userService.singUp(user);
         } catch (RuntimeException e) {
