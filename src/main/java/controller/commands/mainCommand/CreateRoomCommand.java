@@ -35,14 +35,10 @@ public class CreateRoomCommand implements Command {
             throw new RuntimeException(e);
         }
 
-//        JDBCRoomDao jdbcRoomDao = new JDBCRoomDao();
-//        try {
-//            jdbcRoomDao.create(room);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+        request.setAttribute("rooms", roomService.getAllRooms());
 
-        return "redirect:/" + Util.ADMIN_ROOM_LIST.getPath();
+
+        return ADMIN_HOME_JSP;
     }
 
 }

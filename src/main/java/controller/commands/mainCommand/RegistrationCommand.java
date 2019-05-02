@@ -18,32 +18,26 @@ public class RegistrationCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-//        String nameFromRequest = request.getParameter("name");
-//        String passFromRequest = request.getParameter("pass");
-//        String emailFromRequest = request.getParameter("email");
+        String nameFromRequest = request.getParameter("name");
+        String passFromRequest = request.getParameter("pass");
+        String emailFromRequest = request.getParameter("email");
 
-        User user = new User();
-        user.setLogin(request.getParameter("name"));
-        String passWithHash = Constants.getPwdHash(request.getParameter("pass"));
-        user.setPassword(passWithHash);
-        user.setEmail(request.getParameter("email"));
-        user.setRole(2);
+//        User user = new User();
+//        user.setLogin(request.getParameter("name"));
+//        String passWithHash = Constants.getPwdHash(request.getParameter("pass"));
+//        user.setPassword(passWithHash);
+//        user.setEmail(request.getParameter("email"));
+//        user.setRole(2);
 
 
         UserService userService = ServiceFactory.getUserService();
         try {
-            userService.singUp(user);
+            userService.registrationUser(nameFromRequest, passFromRequest, emailFromRequest);
+            request.setAttribute("successful", true);
         } catch (RuntimeException e) {
-            throw new RuntimeException(e);
+            request.setAttribute("error", true);
         }
 
-//
-//        JDBCUserDao jdbcUserDao = new JDBCUserDao();
-//        try {
-//            jdbcUserDao.create(user);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
         return HOME;
     }
 }
