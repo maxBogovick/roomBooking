@@ -17,10 +17,14 @@ public class UserCommand implements Command {
     private static final Logger logger = Logger.getLogger(UserCommand.class);
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        UserService userService = ServiceFactory.getUserService();
+
         String nameFromRequest = request.getParameter("name");
         String passFromRequest = request.getParameter("pass");
         logger.info("Attempt to log in user: " + nameFromRequest);
+
+        UserService userService = ServiceFactory.getUserService();
+
+
 
         User user = userService.login(nameFromRequest);
         String password = user.getPassword();

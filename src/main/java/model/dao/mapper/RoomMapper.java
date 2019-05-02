@@ -17,7 +17,7 @@ public class RoomMapper implements ObjectMapper<Room> {
         room.setCapacity(rs.getInt("capacity"));
         room.setCost(rs.getInt("cost"));
         room.setQuota(rs.getInt("quota"));
-        room.setOrderId(rs.getInt("orderId"));
+        room.setOrderId(rs.getInt("order_ID_order"));
         return room;
     }
     @Override
