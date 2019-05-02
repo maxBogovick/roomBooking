@@ -22,9 +22,7 @@ public class JDBCDaoFactory extends DaoFactory {
     public RoomDao createRoomDao() {
         return new JDBCRoomDao(getConnection());
     }
-//    @Override RoomDao createRoleDao() {
-//        return new JDBCRoleDao(getConnection());
-//    }
+
 
     private Connection getConnection(){
         try {
