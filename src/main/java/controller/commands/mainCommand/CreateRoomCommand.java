@@ -1,7 +1,7 @@
 package controller.commands.mainCommand;
 
 import controller.commands.Command;
-import controller.commands.mainCommand.util.StringUtil;
+import util.StringUtil;
 import model.entity.Room;
 import model.service.RoomService;
 import model.service.ServiceFactory;

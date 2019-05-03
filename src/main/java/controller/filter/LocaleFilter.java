@@ -34,19 +34,19 @@ public class LocaleFilter implements Filter {
         path = path.replaceAll("language/", "");
 
         if (path.equals("/views//")) {
-            path = "/api/";
+            path = "/";
         }
 
         String language = request.getParameter("language");
 
-        boolean isEnglish = language.equals("EN");
-        boolean isUkrainian = language.equals("UA");
+        boolean isEnglish = language.equals("en");
+        boolean isUkrainian = language.equals("ua");
 
 
         if (isEnglish) {
-            request.getSession().setAttribute("language", "en-EN");
+            request.getSession().setAttribute("language", "en");
         } else if (isUkrainian) {
-            request.getSession().setAttribute("language", "uk-UA");
+            request.getSession().setAttribute("language", "ua");
         }
 
         logger.info("session language " + request.getSession().getAttribute("language"));
