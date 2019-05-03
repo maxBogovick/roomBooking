@@ -23,13 +23,13 @@
         <jsp:include page="header.jsp"></jsp:include>
         <jsp:include page="menu.jsp"></jsp:include>
         <div class="w3-container w3-center w3-green">
-            <h2>Please login!</h2>
+            <h2><fmt:message key="please.login"/></h2>
         </div>
         <form method="post" action="/api/login_submit" class="w3-selection w3-light-grey w3-padding">
-            <label>Name:
-                <input type="text" pattern="^[A-Z][a-z]{1,20}$" required placeholder="<fmt:message key="registration.button"/>" name="name" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+            <label><fmt:message key="registration.button"/>
+                <input type="text" required placeholder="<fmt:message key="registration.button"/>" name="name" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
-            <label>Password:
+            <label><fmt:message key="password.input"/>
                 <input type="password" equired placeholder="<fmt:message key="registration.password"/>" name="pass" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <button type="submit" class="w3-btn w3-green w3-round-large w3-margin-bottom"><fmt:message key="submit"/></button>

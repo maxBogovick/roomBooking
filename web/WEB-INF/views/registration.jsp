@@ -33,13 +33,13 @@
                     <%--<div class="w3-blue"><fmt:message key="button.ok"/></div>--%>
                 <%--</c:if>--%>
             <%--</div>--%>
-            <label>Name:
+            <label><fmt:message key="registration.button"/>
                 <input type="text" pattern="^[A-Z][a-z]{1,20}$" required placeholder="<fmt:message key="registration.button"/>" name="name" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
-            <label>Email:
+            <label><fmt:message key="email.input"/>
                 <input type="text" required placeholder="<fmt:message key="example"/>" name="email" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
-            <label>Password:
+            <label><fmt:message key="password.input"/>
                 <input type="password" required placeholder="<fmt:message key="registration.password"/>" name="pass" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <button type="submit" class="w3-btn w3-green w3-round-large w3-margin-bottom"><fmt:message key="submit"/></button>

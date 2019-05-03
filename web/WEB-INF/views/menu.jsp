@@ -1,25 +1,24 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lenkasava
-  Date: 2019-04-08
-  Time: 15:45
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : \"en\"}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="properties"/>
 
 <div style="padding: 5px;">
 
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/info_page'">About Hotel</button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/info_page'"><fmt:message key="about.hotel"/></button>
     |
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/room_list'">Room List</button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/room_list'"><fmt:message key="room.list"/></button>
     |
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/admin_home_list'">Admin Room List</button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/admin_home_list'"><fmt:message key="admin.room.list"/></button>
     |
     <%--<a href="${pageContext.request.contextPath}/userInfo">My Account Info</a>--%>
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/user_home_page'">My Account Info</button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/user_home_page'"><fmt:message key="my.account.info"/></button>
 
     |
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/log_out'">Logout</button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/log_out'"><fmt:message key="exit-button"/></button>
 
 </div>
