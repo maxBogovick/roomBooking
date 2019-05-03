@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public User registrationUser(String nickname, String password, String email) throws ServiceException {
-        if (Validation.isValidParam(nickname) && Validation.isValidParam(password) && Validation.isValidParam(email)) {
+        if (Validation.isValidParam(nickname) && Validation.isValidParam(password)) {
 
             User user = new User();
 
