@@ -17,13 +17,12 @@ public class JDBCDaoFactory extends DaoFactory {
     public UserDao createUserDao() {
         return new JDBCUserDao();
     }
+
     @Override
     public RoomDao createRoomDao() {
         return new JDBCRoomDao(getConnection());
     }
-//    @Override RoomDao createRoleDao() {
-//        return new JDBCRoleDao(getConnection());
-//    }
+
 
     private Connection getConnection(){
         try {

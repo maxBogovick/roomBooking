@@ -21,6 +21,16 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <!--<filter>-->
+        <!--<filter-name>LocaleFilter</filter-name>-->
+        <!--<filter-class>controller.filter.LocaleFilter</filter-class>-->
+    <!--</filter>-->
+
+    <!--<filter-mapping>-->
+        <!--<filter-name>LocaleFilter</filter-name>-->
+        <!--<url-pattern>/api/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
     <absolute-ordering>
         <name>EncodingFilter</name>
         <name>AccessFilter</name>
@@ -58,10 +68,7 @@
         <servlet-name>Servl</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </filter-mapping>
-    <!--<error-page>-->
-        <!--<exception-type>java.lang.Exception</exception-type>-->
-        <!--<location>/WEB-INF/error.jsp</location>-->
-    <!--</error-page>-->
+
 
 
 
