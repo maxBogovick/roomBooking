@@ -1,13 +1,16 @@
 package controller.commands.mainCommand;
 
-import controller.commands.mainCommand.util.StringUtil;
+import controller.commands.Command;
+import util.StringUtil;
 import model.entity.Room;
+import model.service.RoomService;
+import model.service.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class CreateRoomCommand extends BaseCommand {
+public class CreateRoomCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -15,6 +18,8 @@ public class CreateRoomCommand extends BaseCommand {
 //        int capacityFromRequest = Integer.parseInt(request.getParameter("capacity"));
 //        int costFromRequest = Integer.parseInt(request.getParameter("cost"));
 //        int quotaFromRequest = Integer.parseInt(request.getParameter("quota"));
+        final RoomService roomService = ServiceFactory.getRoomService();
+
         boolean isNewRoom = false;
         Room room = new Room();
         if (StringUtil.isEmpty(request.getParameter("roomId"))) {

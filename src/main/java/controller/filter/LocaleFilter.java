@@ -39,8 +39,8 @@ public class LocaleFilter implements Filter {
 
         String language = request.getParameter("language");
 
-        boolean isEnglish = language.equals("EN");
-        boolean isUkrainian = language.equals("UA");
+        boolean isEnglish = language.equals("en");
+        boolean isUkrainian = language.equals("ua");
 
 
         if (isEnglish) {

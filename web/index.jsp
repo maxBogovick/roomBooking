@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : pageContext.request.locale.language}"
+<c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : \"en\"}"
        scope="session"/>
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="properties"/>
@@ -19,15 +19,16 @@
 <div class="w3-container w3-blue-grey w3-opacity w3-right-align">
   <h1><fmt:message key="room.booking"/></h1>
 </div>
+
 <div class="w3-container w3-center">
   <div class="w3-bar w3-padding-large w3-padding-24">
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_registration'">Registration</button>
-    <button class="w3-btn w3-hover-green w3-round-large" onclick="location.href='/api/login'">Login</button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_registration'"><fmt:message key="registration.title"/></button>
+    <button class="w3-btn w3-hover-green w3-round-large" onclick="location.href='/api/login'"><fmt:message key="log-in.title"/></button>
     <div>
-      <a href="${pageContext.request.contextPath}/views/language//?language=UA">
+      <a href="${pageContext.request.contextPath}/views/language//?language=ua">
         <fmt:message key="ua"/>
       </a>
-      <a href="${pageContext.request.contextPath}/views/language//?language=EN">
+      <a href="${pageContext.request.contextPath}/views/language//?language=en">
         <fmt:message key="en"/>
       </a>
     </div>
